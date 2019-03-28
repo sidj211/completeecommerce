@@ -127,7 +127,6 @@
 
                                 <th class="order_number_col">Order Number</th>
                                 <th>Order Date</th>
-                                <th class="ship_col">Ship To</th>
                                 <th>Order Status</th>
                                 <th class="order_total_col">Total</th>
                                 <th class="product_action_col">Action</th>
@@ -147,7 +146,7 @@
 
                                 <td data-title="Order Date">{{$order->created_at->diffForHumans()}}</td>
 
-                                <td data-title="Ship To">John Doe</td>
+
 
                                 <td data-title="Order Status">Pending</td>
 
