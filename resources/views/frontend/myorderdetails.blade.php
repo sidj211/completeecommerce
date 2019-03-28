@@ -419,7 +419,7 @@
                                 <tr>
 
                                     <td colspan="4" class="grandtotal">Grand Total</td>
-                                    <td class="grandtotal">$151.87</td>
+                                    <td class="grandtotal">{{$data->total_amount}}</td>
 
                                 </tr>
 

@@ -62,10 +62,10 @@ class OrderController extends Controller
         }
 
 
-/*
-     $data = Order::find($id);
-      $orderdetails['payment_mode'] = $data->payment_mode;*/
-      return view('frontend.myorderdetails',compact('orderdetails'));
+
+     $data = Order::findOrFail($id);
+
+      return view('frontend.myorderdetails',compact('orderdetails','data'));
 
       //  return $orderdetails;
 
