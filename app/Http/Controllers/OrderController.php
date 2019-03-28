@@ -7,6 +7,10 @@ use App\OrderDetail;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use App\FooterSetting;
+use App\Category;
+use Cart;
 
 class OrderController extends Controller
 {
@@ -17,9 +21,15 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Auth::user()->orders()->paginate(3);
 
-        return view('frontend.myorders',compact('orders'));
+
+        $total=Cart::total();
+        $tax=Cart::tax();
+        $cart=Cart::content();
+        $count=Cart::count();
+
+        return view('frontend.myorders',compact('orders','result','information','extra','account',
+            'copyright','pro','total','tax','cart','count'));
     }
 
     /**
