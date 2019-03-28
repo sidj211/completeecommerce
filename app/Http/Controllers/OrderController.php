@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use App\OrderDetail;
+use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -20,14 +21,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $result=DB::table('footer_settings')->first();
-        $information=FooterSetting::find(1)->footerInfo;
-        $extra=FooterSetting::find(1)->extraInfo;
-        $account=FooterSetting::find(1)->MyAccountInfo;
-        $copyright=FooterSetting::find(1);
 
-        $pro=Category::with('subcategories','products')->get();
-        $orders = Auth::user()->orders;
 
         $total=Cart::total();
         $tax=Cart::tax();
@@ -70,11 +64,26 @@ class OrderController extends Controller
         //this will show the order in details
         $orderdetails = OrderDetail::where('order_id','=',$id)->get();
 
-      $data = Order::find($id);
-        $orderdetails['payment_mode'] = $data->payment_mode;
-        return view('frontend.myorderdetails',compact('orderdetails'));
+        foreach ($orderdetails as $orderdetail)
+        {
+             $products =  Product::findOrFail($orderdetail->product_id);
+            $orderdetail['product_id'] = $products->P_name;
+            $orderdetail['amount'] = $products->P_total_retail_price;
+        }
+
+
+
+     $data = Order::findOrFail($id);
+
+      return view('frontend.myorderdetails',compact('orderdetails','data'));
+
+      //  return $orderdetails;
+
+
+
 
         //here we have to send all the items related to the order ID
+
 
 
 
