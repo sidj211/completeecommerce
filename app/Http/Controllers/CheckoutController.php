@@ -159,7 +159,8 @@ class CheckoutController extends Controller
         $order->address_id = $temp['id']; // 11
         $order->payment_mode = $temp['payment'];
         $order->total_amount = $temp['total'];
-        $order->user_id = 5;
+        $order->status = 0;
+        $order->user_id = $user->id;
 
         $result=$order->save();
 
@@ -175,6 +176,7 @@ class CheckoutController extends Controller
                 $orderdetails->product_id = $order->id;
                 $orderdetails->order_id = $savedata->id;
                 $orderdetails->qty = $order->qty;
+                $orderdetails->status = 0;
                 $orderdetails->user_id = $user->id;
                 $orderdetails->save();
                 echo "sdfa";

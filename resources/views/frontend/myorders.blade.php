@@ -72,46 +72,17 @@
 
                     <h1>My Orders</h1>
 
-                    <header class="top_box on_the_sides">
 
-                        <div class="left_side v_centered">
 
-                            <p class="visible_pages">Showing 1 to 10 of 30 (3 pages)</p>
+                    <header class="top_box on_the_sides" style="
+    padding-top: 0px;
+    padding-bottom: 0px;">
 
-                            <span>Show:</span>
 
-                            <div class="custom_select">
-
-                                <select name="">
-
-                                    <option value="10">10</option>
-                                    <option value="9">9</option>
-                                    <option value="8">8</option>
-                                    <option value="7">7</option>
-                                    <option value="6">6</option>
-                                    <option value="5">5</option>
-                                    <option value="4">4</option>
-                                    <option value="3">3</option>
-                                    <option value="2">2</option>
-                                    <option value="1">1</option>
-
-                                </select>
-
-                            </div>
-
-                        </div>
 
                         <div class="right_side">
 
-                            <ul class="pags">
-
-                                <li><a href="#"></a></li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#"></a></li>
-
-                            </ul>
+                            {{$orders->render()}}
 
                         </div>
 
@@ -142,13 +113,17 @@
                             @foreach($orders as $order)
                             <tr>
 
-                                <td data-title="Order Number"><a href="/myordersdetails/{{$order->id}}">{{$order->id}}</a></td>
+                                <td data-title="Order Number"><a href="">{{$order->id}}</a></td>
 
                                 <td data-title="Order Date">{{$order->created_at->diffForHumans()}}</td>
 
 
 
+                                @if($order->status == 0)
                                 <td data-title="Order Status">Pending</td>
+                                @else
+                                    <td data-title="Order Status">Done</td>
+                                @endif
 
                                 <td data-title="Total" class="total">{{$order->total_amount}}</td>
 
@@ -158,15 +133,11 @@
 
                                         <li>
 
-                                            <a href="#" class="button_grey">View Order</a>
+                                            <a href="/myorders/{{$order->id}}" class="button_grey">View Order</a>
 
                                         </li>
 
-                                        <li>
 
-                                            <a href="#" class="button_grey">Reorder</a>
-
-                                        </li>
 
                                     </ul>
 
@@ -181,11 +152,6 @@
 
                     </div>
 
-                    <footer class="bottom_box">
-
-                        <a href="#" class="button_grey middle_btn">Back</a>
-
-                    </footer><!--/ .bottom_box -->
 
                 </main><!--/ [col]-->
 

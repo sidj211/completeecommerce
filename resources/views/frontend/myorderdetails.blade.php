@@ -319,7 +319,7 @@
 
                                     <th>Payment</th>
 
-                                    <td>{{$orderdetails['payment_mode']}}</td>
+                                    <td></td>
 
                                 </tr>
 
@@ -369,80 +369,34 @@
 
                                 <tbody>
 
+                                @foreach($orderdetails as $orderdetail)
+
+
+
                                 <tr>
 
                                     <td data-title="Product Name">
 
-                                        <a href="#" class="product_title">Adipiscing aliquet sed in lacus, Liqui-gels 24</a>
+                                        <a href="#" class="product_title">{{$orderdetail->product_id}}</a>
 
-                                        <ul class="sc_product_info">
 
-                                            <li>Size: Big</li>
-                                            <li>Color: Red</li>
-
-                                        </ul>
 
                                     </td>
 
                                     <td data-title="SKU">PS01</td>
 
-                                    <td data-title="Price" class="subtotal">$5.99</td>
+                                    <td data-title="Price" class="subtotal">{{$orderdetail->amount}}</td>
 
-                                    <td data-title="Quantity">1</td>
+                                    <td data-title="Quantity">{{$orderdetail->qty}}</td>
 
-                                    <td data-title="Total" class="total">$5.99</td>
-
-                                </tr>
-
-                                <tr>
-
-                                    <td data-title="Product Name">
-
-                                        <a href="#" class="product_title">Sed in lacus ut enim adipiscing dictum elementum velit<br>Relief 4.25 fl oz (126ml)</a>
-
-                                        <ul class="sc_product_info">
-
-                                            <li>Size: Big</li>
-                                            <li>Color: Red</li>
-
-                                        </ul>
-
-                                    </td>
-
-                                    <td data-title="SKU">PS02</td>
-
-                                    <td data-title="Price" class="subtotal">$8.99</td>
-
-                                    <td data-title="Quantity">1</td>
-
-                                    <td data-title="Total" class="total">$8.99</td>
+                                    <td data-title="Total" class="total">{{($orderdetail->amount)*($orderdetail->qty) }}</td>
 
                                 </tr>
 
-                                <tr>
+                                    @endforeach
 
-                                    <td data-title="Product Name">
 
-                                        <a href="#" class="product_title">Donec porta diam eu massa quisque Mint 160 ea</a>
 
-                                        <ul class="sc_product_info">
-
-                                            <li>Size: Big</li>
-                                            <li>Color: Red</li>
-
-                                        </ul>
-
-                                    </td>
-
-                                    <td data-title="SKU">PS03</td>
-
-                                    <td data-title="Price" class="subtotal">$76.99</td>
-
-                                    <td data-title="Quantity">1</td>
-
-                                    <td data-title="Total" class="total">$76.99</td>
-
-                                </tr>
 
                                 </tbody>
 
@@ -483,7 +437,6 @@
 
                     </section>
 
-                    <!-- - - - - - - - - - - - - - End of items ordered - - - - - - - - - - - - - - - - -->
 
                 </main><!--/ [col]-->
 
