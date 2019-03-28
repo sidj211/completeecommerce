@@ -1,5 +1,5 @@
 @extends('layouts.master')
-
+@include('includes.footer')
 
 @section('content')
 

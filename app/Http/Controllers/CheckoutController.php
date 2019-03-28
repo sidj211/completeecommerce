@@ -50,7 +50,14 @@ class CheckoutController extends Controller
      */
     public function create()
     {
-        //
+        $total=Cart::total();
+        $tax=Cart::tax();
+        $cart=Cart::content();
+        $count=Cart::count();
+        $user=Auth::user();
+        $address=$user->address()->get();
+        return view('frontend.addressbook',compact('address','total','tax','count','cart'));
+
     }
 
     /**
@@ -67,7 +74,7 @@ class CheckoutController extends Controller
         $user->address()->create($add);
 
 
-       return redirect('/checkout');
+       return redirect()->back;
     }
 
     /**

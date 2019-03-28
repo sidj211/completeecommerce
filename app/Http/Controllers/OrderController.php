@@ -6,6 +6,10 @@ use App\Order;
 use App\OrderDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use App\FooterSetting;
+use App\Category;
+use Cart;
 
 class OrderController extends Controller
 {
@@ -16,9 +20,22 @@ class OrderController extends Controller
      */
     public function index()
     {
+        $result=DB::table('footer_settings')->first();
+        $information=FooterSetting::find(1)->footerInfo;
+        $extra=FooterSetting::find(1)->extraInfo;
+        $account=FooterSetting::find(1)->MyAccountInfo;
+        $copyright=FooterSetting::find(1);
+
+        $pro=Category::with('subcategories','products')->get();
         $orders = Auth::user()->orders;
 
-        return view('frontend.myorders',compact('orders'));
+        $total=Cart::total();
+        $tax=Cart::tax();
+        $cart=Cart::content();
+        $count=Cart::count();
+
+        return view('frontend.myorders',compact('orders','result','information','extra','account',
+            'copyright','pro','total','tax','cart','count'));
     }
 
     /**
