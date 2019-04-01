@@ -141,11 +141,9 @@ Route::get('/check2',function(){
 
 //Route for orders
 Route::resource('/myorders','OrderController');
+//Route for my account
+Route::get('/myaccount',function (){
 
-Route::get('/userdetails',function(){
-
-    $orders = Auth::user()->orders;
-    return json_encode($orders);
-
+    return view('frontend.myaccount');
 });
 
