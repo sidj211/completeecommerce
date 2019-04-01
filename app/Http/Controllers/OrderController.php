@@ -15,21 +15,28 @@ use Cart;
 class OrderController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing cof the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
 
-
+        $result=DB::table('footer_settings')->first();
+        $information=FooterSetting::find(1)->footerInfo;
+        $extra=FooterSetting::find(1)->extraInfo;
+        $account=FooterSetting::find(1)->MyAccountInfo;
+        $copyright=FooterSetting::find(1);
+        $pro=Category::with('subcategories','products')->get();
         $total=Cart::total();
         $tax=Cart::tax();
         $cart=Cart::content();
         $count=Cart::count();
-
+        $orders=Auth::user()->orders()->paginate(3);
         return view('frontend.myorders',compact('orders','result','information','extra','account',
             'copyright','pro','total','tax','cart','count'));
+
+
     }
 
     /**

@@ -159,8 +159,6 @@ class CheckoutController extends Controller
 //      getting the id of current logged in user
         $user = Auth::user();
 
-
-
         $order = new Order();
 
         $order->address_id = $temp['id']; // 11
@@ -178,7 +176,9 @@ class CheckoutController extends Controller
             $thisis=Cart::content();
             foreach ($thisis as $order)
             {
-
+                $quantity=DB::table('products')->where('id',$thisis->id)->get('P_quantity');
+                $quantity=$quantity-1;
+                DB::table('products')->where('id',$thisis->id)->update(['P_quantity'=>$quantity]);
                 $orderdetails = new OrderDetail();
                 $orderdetails->product_id = $order->id;
                 $orderdetails->order_id = $savedata->id;
@@ -186,7 +186,7 @@ class CheckoutController extends Controller
                 $orderdetails->status = 0;
                 $orderdetails->user_id = $user->id;
                 $orderdetails->save();
-                echo "sdfa";
+
 
             }
 
@@ -195,7 +195,7 @@ class CheckoutController extends Controller
         }
 
 
-       // return "done";
+        return 'done';
 
 
 

@@ -115,7 +115,7 @@
 
                                 <td data-title="Order Number"><a href="">{{$order->id}}</a></td>
 
-                                <td data-title="Order Date">{{$order->created_at->diffForHumans()}}</td>
+                                <td data-title="Order Date">{{$order->created_at}}</td>
 
 
 
