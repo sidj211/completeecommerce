@@ -148,13 +148,6 @@ class CheckoutController extends Controller
         Session::put('add', $payment);
 
         $temp = Session::get('add');
-      // return Cart::store('ashish');
-
-
-      //return isset($mydata);
-
-
-       // return  $payment['city'];
 
 //      getting the id of current logged in user
         $user = Auth::user();
