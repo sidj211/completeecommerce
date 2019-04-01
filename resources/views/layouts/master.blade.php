@@ -220,7 +220,9 @@
                                             <!-- - - - - - - - - - - - - - End submenu (level 2) - - - - - - - - - - - - - - - - -->
 
                                         </li>
+
                                         <li><a href="/todaydeals">Today Deals</a></li>
+                                        <li><a href="/myorders">My Orders</a></li>
                                         <li><a href="/featuredproduct">Featured Products</a></li>
 
 

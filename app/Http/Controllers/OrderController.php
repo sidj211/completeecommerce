@@ -14,6 +14,14 @@ use Cart;
 
 class OrderController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -21,15 +29,19 @@ class OrderController extends Controller
      */
     public function index()
     {
-
-
+        $result=DB::table('footer_settings')->first();
+        $information=FooterSetting::find(1)->footerInfo;
+        $extra=FooterSetting::find(1)->extraInfo;
+        $account=FooterSetting::find(1)->MyAccountInfo;
+        $copyright=FooterSetting::find(1);
+        $pro=Category::with('subcategories','products')->get();
+        $orders = Auth::user()->orders()->paginate(3);
+        $cart=Cart::content();
         $total=Cart::total();
         $tax=Cart::tax();
-        $cart=Cart::content();
         $count=Cart::count();
-
-        return view('frontend.myorders',compact('orders','result','information','extra','account',
-            'copyright','pro','total','tax','cart','count'));
+        return view('frontend.myorders',compact('orders','information','result'
+        ,'extra','account','copyright','pro','cart','tax','total','count'));
     }
 
     /**
@@ -75,9 +87,10 @@ class OrderController extends Controller
 
      $data = Order::findOrFail($id);
 
+
       return view('frontend.myorderdetails',compact('orderdetails','data'));
 
-      //  return $orderdetails;
+     //  return $data;
 
 
 

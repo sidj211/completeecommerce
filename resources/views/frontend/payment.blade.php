@@ -6,7 +6,9 @@
             src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
+
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" ></script>
 
     <div class="secondary_page_wrapper">
 
@@ -194,6 +196,8 @@
         {
             jQuery('#placeorder').on('click',function(){
 
+
+
                 var radio=$("input[name='radio_4']:checked").val();
                 if(radio){
                     $.ajax({
@@ -204,7 +208,9 @@
                             'payment':radio,
                         },
                         success:function (response) {
-                            console.log(response);
+
+                            swal("Success", "Thankyou for shopping with us","success");
+                            window.location.href = "/";
 
 
                             //    switch to the next page

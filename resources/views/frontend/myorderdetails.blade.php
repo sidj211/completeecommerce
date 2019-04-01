@@ -3,13 +3,11 @@
 
 @section('content')
 
-    <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
 
     <div class="secondary_page_wrapper">
 
         <div class="container">
 
-            <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
 
             <ul class="breadcrumbs">
 
@@ -24,33 +22,7 @@
 
                 <aside class="col-md-3 col-sm-4">
 
-                    <!-- - - - - - - - - - - - - - Information - - - - - - - - - - - - - - - - -->
-
-                    <section class="section_offset">
-
-                        <h3>My Account</h3>
-
-                        <ul class="theme_menu">
-
-                            <li><a href="#">Account Dashboard</a></li>
-                            <li><a href="#">Account Information</a></li>
-                            <li><a href="#">Address Book</a></li>
-                            <li><a href="#">My Orders</a></li>
-                            <li><a href="#">Billing Agreements</a></li>
-                            <li><a href="#">Recurring Profiles</a></li>
-                            <li><a href="#">My Product Reviews</a></li>
-                            <li><a href="#">My Tags</a></li>
-                            <li><a href="#">My Wishlist</a></li>
-                            <li><a href="#">My Applications</a></li>
-                            <li><a href="#">Newsletter Subscriptions</a></li>
-                            <li><a href="#">My Downloadable Products</a></li>
-
-                        </ul>
-
-                    </section><!--/ .section_offset -->
-
-                    <!-- - - - - - - - - - - - - - End of information - - - - - - - - - - - - - - - - -->
-
+                  @include('includes.accountsidebar')
                     <!-- - - - - - - - - - - - - - Banner - - - - - - - - - - - - - - - - -->
 
                     <div class="section_offset">
@@ -65,113 +37,9 @@
 
                     <!-- - - - - - - - - - - - - - End of banner - - - - - - - - - - - - - - - - -->
 
-                    <!-- - - - - - - - - - - - - - Already viewed products - - - - - - - - - - - - - - - - -->
-
-                    <section class="section_offset">
-
-                        <h3>Already Viewed Products</h3>
-
-                        <ul class="products_list_widget">
-
-                            <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-
-                            <li>
-
-                                <a href="#" class="product_thumb">
-
-                                    <img src="images/product_thumb_4.jpg" alt="">
-
-                                </a>
-
-                                <div class="wrapper">
-
-                                    <a href="#" class="product_title">Adipiscing aliquet sed in lacus...</a>
-
-                                    <div class="clearfix product_info">
-
-                                        <p class="product_price alignleft"><b>$5.99</b></p>
-
-                                        <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
-
-                                        <ul class="rating alignright">
-
-                                            <li class="active"></li>
-                                            <li class="active"></li>
-                                            <li class="active"></li>
-                                            <li class="active"></li>
-                                            <li></li>
-
-                                        </ul>
-
-                                        <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
-
-                                    </div>
-
-                                </div>
-
-                            </li>
-
-                            <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
-
-                            <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-
-                            <li>
-
-                                <a href="#" class="product_thumb">
-
-                                    <img src="images/product_thumb_10.jpg" alt="">
-
-                                </a>
-
-                                <div class="wrapper">
-
-                                    <a href="#" class="product_title">Diam eu massa quisque donec-...</a>
-
-                                    <div class="clearfix product_info">
-
-                                        <p class="product_price alignleft"><s>$29.99</s> <b>$21.99</b></p>
-
-                                    </div>
-
-                                </div>
-
-                            </li>
-
-                            <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
-
-                            <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-
-                            <li>
-
-                                <a href="#" class="product_thumb">
-
-                                    <img src="images/product_thumb_11.jpg" alt="">
-
-                                </a>
-
-                                <div class="wrapper">
-
-                                    <a href="#" class="product_title">Sed in lacus ut enim adipiscing...</a>
-
-                                    <div class="clearfix product_info">
-
-                                        <p class="product_price alignleft"><b>$13.99</b></p>
-
-                                    </div>
-
-                                </div>
-
-                            </li>
-
-                            <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
-
-                        </ul><!--/ .list_of_products-->
-
-                    </section>
-
-                    <!-- - - - - - - - - - - - - - End of already viewed products - - - - - - - - - - - - - - - - -->
 
                     <!-- - - - - - - - - - - - - - My orders - - - - - - - - - - - - - - - - -->
+{{--
 
                     <section class="section_offset">
 
@@ -244,15 +112,18 @@
                         </footer>
 
                     </section>
+--}}
 
                     <!-- - - - - - - - - - - - - - End of already viewed products - - - - - - - - - - - - - - - - -->
 
                 </aside><!--/ [col]-->
 
+
+
                 <main class="col-md-9 col-sm-8">
 
                     {{----add a new column status of pending and approved----}}
-                    <h1>Order id {{$orderdetails['0']['id']}} - Pending</h1>
+                    <h1>Order id {{$orderdetails['0']['order_id']}} - Pending</h1>
 
                     <!-- - - - - - - - - - - - - - Order table - - - - - - - - - - - - - - - - -->
 
@@ -279,7 +150,7 @@
 
                                     <th>Order Number</th>
 
-                                    <td><a href="#">{{$orderdetails['0']['id']}}</a></td>
+                                    <td><a href="#">{{$orderdetails['0']['order_id']}}</a></td>
 
                                 </tr>
 
@@ -307,19 +178,13 @@
 
                                 </tr>
 
-                                <tr>
 
-                                    <th>Shipment</th>
-
-                                    <td>United Parcel Service - Worldwide Expedited</td>
-
-                                </tr>
 
                                 <tr>
 
                                     <th>Payment</th>
 
-                                    <td></td>
+                                    <td>{{$data->payment_mode}}</td>
 
                                 </tr>
 
@@ -327,7 +192,7 @@
 
                                     <th>Total</th>
 
-                                    <td class="total">$5.99</td>
+                                    <td class="total"></td>
 
                                 </tr>
 
@@ -358,7 +223,7 @@
                                 <tr>
 
                                     <th class="product_title_col">Product Name</th>
-                                    <th class="product_sku_col">SKU</th>
+
                                     <th class="product_price_col">Price</th>
                                     <th class="product_qty_col">Quantity</th>
                                     <th class="product_total_col">Total</th>
@@ -383,7 +248,6 @@
 
                                     </td>
 
-                                    <td data-title="SKU">PS01</td>
 
                                     <td data-title="Price" class="subtotal">{{$orderdetail->amount}}</td>
 
@@ -402,7 +266,9 @@
 
                                 <tfoot>
 
-                                <tr>
+                                {{--section for shipping charges and subtotal--}}
+
+                                {{--<tr>
 
                                     <td colspan="4" class="bold">Subtotal</td>
                                     <td class="total">$146.87</td>
@@ -414,12 +280,12 @@
                                     <td colspan="4" class="bold">Shipping &amp; Heading (Flat Rate - Fixed)</td>
                                     <td class="total">$5.00</td>
 
-                                </tr>
+                                </tr>--}}
 
                                 <tr>
 
-                                    <td colspan="4" class="grandtotal">Grand Total</td>
-                                    <td class="grandtotal">{{$data->total_amount}}</td>
+                                    <td colspan="4" class="grandtotal">Grand Total : {{$data->total_amount}}</td>
+                                    <td class="grandtotal"></td>
 
                                 </tr>
 
@@ -446,6 +312,5 @@
 
     </div><!--/ .page_wrapper-->
 
-    <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
 
 @endsection
