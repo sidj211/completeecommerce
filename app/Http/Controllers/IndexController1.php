@@ -164,4 +164,11 @@ class IndexController1 extends Controller
 
 
 
+    public function myaccount()
+    {
+        return view('frontend.myaccount');
+    }
+
+
+
 }

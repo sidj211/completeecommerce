@@ -25,33 +25,7 @@
 
                 <aside class="col-md-3 col-sm-4">
 
-                    <!-- - - - - - - - - - - - - - Information - - - - - - - - - - - - - - - - -->
-
-                    <section class="section_offset">
-
-                        <h3>My Account</h3>
-
-                        <ul class="theme_menu">
-
-                            <li><a href="#">Account Dashboard</a></li>
-                            <li><a href="#">Account Information</a></li>
-                            <li><a href="#">Address Book</a></li>
-                            <li><a href="#">My Orders</a></li>
-                            <li><a href="#">Billing Agreements</a></li>
-                            <li><a href="#">Recurring Profiles</a></li>
-                            <li><a href="#">My Product Reviews</a></li>
-                            <li><a href="#">My Tags</a></li>
-                            <li><a href="#">My Wishlist</a></li>
-                            <li><a href="#">My Applications</a></li>
-                            <li><a href="#">Newsletter Subscriptions</a></li>
-                            <li><a href="#">My Downloadable Products</a></li>
-
-                        </ul>
-
-                    </section><!--/ .section_offset -->
-
-                    <!-- - - - - - - - - - - - - - End of information - - - - - - - - - - - - - - - - -->
-
+                   @include('includes.accountsidebar')
                     <!-- - - - - - - - - - - - - - Banner - - - - - - - - - - - - - - - - -->
 
                     <div class="section_offset">
@@ -109,42 +83,99 @@
                             <tbody>
 
 
+                            @if($orders)
 
-                            @foreach($orders as $order)
-                            <tr>
+                                @foreach($orders as $order)
+                                    <tr>
 
-                                <td data-title="Order Number"><a href="">{{$order->id}}</a></td>
+                                        <td data-title="Order Number"><a href="">{{$order->id}}</a></td>
 
+                                        <td data-title="Order Date">{{$order->created_at->diffForHumans()}}</td>
+
+
+
+                                        @if($order->status == 0)
+                                            <td data-title="Order Status">Pending</td>
+                                        @else
+                                            <td data-title="Order Status">Done</td>
+                                        @endif
+
+<<<<<<< HEAD
                                 <td data-title="Order Date">{{$order->created_at}}</td>
+=======
+                                        <td data-title="Total" class="total">{{$order->total_amount}}</td>
+>>>>>>> e52d1fe1e7bf053f4dea393b5f948f50be4531b2
+
+                                        <td data-title="Action">
+
+                                            <ul class="buttons_col">
+
+                                                <li>
+
+                                                    <a href="/myorders/{{$order->id}}" class="button_grey">View Order</a>
+
+                                                </li>
 
 
 
-                                @if($order->status == 0)
-                                <td data-title="Order Status">Pending</td>
+                                            </ul>
+
+                                        </td>
+
+                                    </tr>
+
+
+                                @endforeach
+
                                 @else
-                                    <td data-title="Order Status">Done</td>
+                                <section class="section_offset">
+
+
+
+                                    <div class="row">
+
+                                        <div class="col-sm-4">
+
+
+
+
+                                        </div><!--/ [col] -->
+                                        <div class="col-sm-4">
+
+
+
+
+                                        </div><!--/ [col] -->
+                                        <div class="col-sm-4">
+
+                                            <div class="alert_box info">
+
+                                                <b>No orders</b>
+
+
+
+                                            </div><!--/ .alert_box.warning -->
+
+
+
+                                        </div><!--/ [col] -->
+
+                                    </div><!--/ .row -->
+
+                                </section>
+
                                 @endif
 
-                                <td data-title="Total" class="total">{{$order->total_amount}}</td>
-
-                                <td data-title="Action">
-
-                                    <ul class="buttons_col">
-
-                                        <li>
-
-                                            <a href="/myorders/{{$order->id}}" class="button_grey">View Order</a>
-
-                                        </li>
 
 
 
-                                    </ul>
 
-                                </td>
 
-                            </tr>
-                                @endforeach
+
+
+
+
+
 
                             </tbody>
 

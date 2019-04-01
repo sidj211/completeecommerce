@@ -14,6 +14,14 @@ use Cart;
 
 class OrderController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
+
     /**
      * Display a listing cof the resource.
      *
@@ -21,22 +29,34 @@ class OrderController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
 
+=======
+>>>>>>> e52d1fe1e7bf053f4dea393b5f948f50be4531b2
         $result=DB::table('footer_settings')->first();
         $information=FooterSetting::find(1)->footerInfo;
         $extra=FooterSetting::find(1)->extraInfo;
         $account=FooterSetting::find(1)->MyAccountInfo;
         $copyright=FooterSetting::find(1);
         $pro=Category::with('subcategories','products')->get();
+<<<<<<< HEAD
+=======
+        $orders = Auth::user()->orders()->paginate(3);
+        $cart=Cart::content();
+>>>>>>> e52d1fe1e7bf053f4dea393b5f948f50be4531b2
         $total=Cart::total();
         $tax=Cart::tax();
-        $cart=Cart::content();
         $count=Cart::count();
+<<<<<<< HEAD
         $orders=Auth::user()->orders()->paginate(3);
         return view('frontend.myorders',compact('orders','result','information','extra','account',
             'copyright','pro','total','tax','cart','count'));
 
 
+=======
+        return view('frontend.myorders',compact('orders','information','result'
+        ,'extra','account','copyright','pro','cart','tax','total','count'));
+>>>>>>> e52d1fe1e7bf053f4dea393b5f948f50be4531b2
     }
 
     /**
@@ -82,9 +102,10 @@ class OrderController extends Controller
 
      $data = Order::findOrFail($id);
 
+
       return view('frontend.myorderdetails',compact('orderdetails','data'));
 
-      //  return $orderdetails;
+     //  return $data;
 
 
 
