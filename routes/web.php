@@ -43,7 +43,7 @@ Route::get('/d',function (){
 });
 Route::get('/getsession',function (){
 
-   return session()->get('add');
+   return session()->get('cart');
 });
 
 Route::resource('/cart','CartController');
