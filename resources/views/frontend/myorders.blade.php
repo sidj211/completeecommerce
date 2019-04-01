@@ -100,7 +100,11 @@
                                             <td data-title="Order Status">Done</td>
                                         @endif
 
+<<<<<<< HEAD
+                                <td data-title="Order Date">{{$order->created_at}}</td>
+=======
                                         <td data-title="Total" class="total">{{$order->total_amount}}</td>
+>>>>>>> e52d1fe1e7bf053f4dea393b5f948f50be4531b2
 
                                         <td data-title="Action">
 
